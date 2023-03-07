@@ -9,8 +9,10 @@ var bodyParser = require('body-parser');
 var swaggerJsdoc = require('swagger-jsdoc');
 var swaggerUi = require('swagger-ui-express');
 
+// Module Routes
 var indexRouter = require('./routes/index');
 var provinsiRouter = require('./routes/provinsi');
+var kabupatenKotaRouter = require('./routes/kabupaten_kota.js');
 
 var app = express();
 
@@ -70,6 +72,7 @@ app.use(
 // registration all routes
 app.use('/', indexRouter);
 app.use('/provinsi', provinsiRouter);
+app.use('/kabupaten-kota', kabupatenKotaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
