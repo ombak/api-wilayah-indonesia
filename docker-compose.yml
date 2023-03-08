@@ -11,3 +11,5 @@ services:
       target: base
     ports:
       - "${PORT}:${PORT}"
+    env_file:
+      - .env
