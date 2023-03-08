@@ -59,7 +59,7 @@ var csv = require('fast-csv');
  *         schema:
  *           type: string
  *         required: true
- *         description: The provinsi id
+ *         description: Provinsi ID
  *     responses:
  *       200:
  *         description: The kabupaten kota response by provinsi id
