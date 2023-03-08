@@ -21,9 +21,6 @@ var app = express();
 // set global variable
 global.__basedir = __dirname;
 
-// get domain name
-const hostname = window.location.host;
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -55,7 +52,7 @@ const options = {
         },
         servers: [
             {
-                url: hostname,
+                url: process.env.SERVERi +':'+ process.env.PORT,
             },
         ],
     },
