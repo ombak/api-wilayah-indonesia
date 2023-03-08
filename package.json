@@ -1,6 +1,6 @@
 {
     "name": "api-wilayah-indonesia",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "private": true,
     "scripts": {
         "start": "nodemon ./bin/www"
@@ -12,7 +12,6 @@
         "express": "~4.16.1",
         "fast-csv": "^4.3.6",
         "http-errors": "~1.6.3",
-        "jade": "~1.11.0",
         "morgan": "~1.9.1",
         "swagger-jsdoc": "^6.2.8",
         "swagger-ui-express": "^4.6.2"
