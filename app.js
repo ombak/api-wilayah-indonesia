@@ -50,11 +50,11 @@ const options = {
                 email: "coklatpanas83@gmail.com",
             },
         },
-        servers: [
-            {
-                url: "http://localhost:3000",
-            },
-        ],
+//        servers: [
+//            {
+//                url: "http://localhost:3000",
+//            },
+//        ],
     },
     apis: [path.join(__dirname, "/routes/*.js")],
 };
