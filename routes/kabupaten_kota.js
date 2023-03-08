@@ -66,6 +66,7 @@ var csv = require('fast-csv');
  *         content:
  *           application/json:
  *             schema:
+ *               type: array
  *               items:
  *                 $ref: '#/components/schemas/KabupatenKota'
  *       400:
@@ -79,7 +80,7 @@ router.get('/:provinsi_id', function (req, res, next) {
     // get data kabupaten/kota by provinsi id
     fs.createReadStream(path.resolve(__basedir, 'data', 'tbl_kabupaten_kota.csv'))
         .pipe(csv.parse({ headers: true }))
-        .on('error', error => console.log(error))
+        .on('error', error => console.error(error))
         .on('data', (row) => {
             if (row.provinsi_id == _id) {
                 _arrObj.push(row);
