@@ -14,6 +14,7 @@ var indexRouter = require('./routes/index');
 var provinsiRouter = require('./routes/provinsi');
 var kabupatenKotaRouter = require('./routes/kabupaten_kota.js');
 var kecamatanRouter = require('./routes/kecamatan.js');
+var kelurahanRouter = require('./routes/kelurahan.js');
 
 var app = express();
 
@@ -75,6 +76,7 @@ app.use('/', indexRouter);
 app.use('/provinsi', provinsiRouter);
 app.use('/kabupaten-kota', kabupatenKotaRouter);
 app.use('/kecamatan', kecamatanRouter);
+app.use('/kelurahan', kelurahanRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

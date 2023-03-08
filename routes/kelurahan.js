@@ -8,78 +8,83 @@ var csv = require('fast-csv');
 
 /**
  * @swagger
- *
+
  * components:
  *   schemas:
- *     Kecamatan:
+ *     Kelurahan:
  *       type: object
  *       required:
  *         - id
- *         - kabkot_id
- *         - kecamatan
+ *         - kecamatan_id
+ *         - kelurahan
+ *         - kd_pos
  *       properties:
  *         id:
  *           type: string
- *           description: The auto generate id of kecamatan
- *         kabkot_id:
+ *           description: The auto generate id of kelurahan
+ *         kecamatan_id:
  *           type: string
- *           description: Kabupaten Kota id
- *         kecamatan:
+ *           description: Kecamatan id
+ *         kelurahan:
  *           type: string
- *           description: Name of kecamatan
+ *           description: The name of Kelurahan
+ *         kd_pos:
+ *           type: string
+ *           description: Zipcode from kelurahan
  *       example:
  *         id: 1
- *         kabkot_id: 1
- *         kecamatan: Arongan Lambalek
+ *         kecamatan_id: 1
+ *         kelurahan: Alue Bagok
+ *         kd_pos: 23652
  */
 
 /**
  * @swagger
- *
+ * 
  * tags:
- *   name: Kecamatan
- *   description: Nama Kecamatan di Indonesia
- * /kecamatan/{kabupaten_kota_id}:
+ *   name: Kelurahan
+ *   description: Nama kelurahan di Indonesia
+ * /kelurahan/{kecamatan_id}:
  *   get:
- *     summary: List all Kecamatan
- *     tags: [Kecamatan]
+ *     summary: List all Kelurahan in Indonesia
+ *     tags: [Kelurahan]
  *     parameters:
  *       - in: path
- *         name: kabupaten_kota_id
+ *         name: kecamatan_id
  *         schema:
  *           type: string
  *         required: true
- *         description: Kabupaten Kota ID
+ *         description: Kecamatan ID
  *     responses:
  *       200:
- *         description: The list of Kecamatan
+ *         description: The list of Kelurahan
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Kecamatan'
+ *                 $ref: '#/components/schemas/Kelurahan'
  *       400:
- *         description: The Kecamatan was not found
+ *         description: The Kelurahan was not found
  */
-router.get('/:kabupaten_kota_id', function (req, res, next) {
+router.get('/:kecamatan_id', function (req, res, next) {
     var _arrObj = [];
-    var _id = req.params.kabupaten_kota_id;
+    var _id = req.params.kecamatan_id;
 
     // get data kecamtan from csv file
-    fs.createReadStream(path.resolve(__basedir, 'data', 'tbl_kecamatan.csv'))
+    fs.createReadStream(path.resolve(__basedir, 'data', 'tbl_kelurahan.csv'))
         .pipe(csv.parse({ headers: true }))
         .on('error', error => console.error(error))
         .on('data', (row) => {
             // push the row to array
-            if (row.kabkot_id == _id) {
+            if (row.kecamatan_id == _id) {
                 _arrObj.push(row);
             }
         })
         .on('end', (rowCount) => {
             res.status(200).json({
                 "status": "success",
-                "message": "Get all data kecamatan",
+                "message": "Get all data kelurahan",
                 "data": _arrObj
             });
         })
