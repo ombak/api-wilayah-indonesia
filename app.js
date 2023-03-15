@@ -10,6 +10,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var swaggerJsdoc = require('swagger-jsdoc');
 var swaggerUi = require('swagger-ui-express');
+var cors = require('cors');
 
 // Module Routes
 var indexRouter = require('./routes/index');
@@ -29,6 +30,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// use cors
+//app.use(cors());
+
 
 // swagger settings
 const options = {
