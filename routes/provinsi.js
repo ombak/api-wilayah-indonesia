@@ -1,11 +1,10 @@
-'use strict';
+"use strict";
 
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var fs = require('fs');
-var path = require('path');
-var csv = require('fast-csv');
-
+var fs = require("fs");
+var path = require("path");
+var csv = require("fast-csv");
 
 /**
  * @swagger
@@ -58,24 +57,25 @@ var csv = require('fast-csv');
  *               items:
  *                 $ref: '#/components/schemas/Provinsi'
  */
-router.get('/', function(req, res, next) {
-    var _arrObj = [];
+router.get("/", function (req, res, next) {
+  var _arrObj = [];
 
-    // get data provinsi from csv file
-    fs.createReadStream(path.resolve(__basedir, 'data', 'tbl_provinsi.csv'))
-        .pipe(csv.parse({ headers: true }))
-        .on('error', error => console.log(error))
-        .on('data', (row) => {
-            // push the row to array
-            _arrObj.push(row);
-        })
-        .on('end', (rowCount) => {
-            res.status(200).json({
-                "status": "success",
-                "message": "Get all data provinsi",
-                "data": _arrObj
-            });
-        });
+  // get data provinsi from csv file
+  fs.createReadStream(path.resolve(__basedir, "data", "tbl_provinsi.csv"))
+    .pipe(csv.parse({ headers: true }))
+    .on("error", (error) => console.log(error))
+    .on("data", (row) => {
+      // push the row to array
+      _arrObj.push(row);
+    })
+    .on("end", (rowCount) => {
+      console.log("render");
+      res.status(200).json({
+        status: "success",
+        message: "Get all data provinsi",
+        data: _arrObj,
+      });
+    });
 });
 
 module.exports = router;
