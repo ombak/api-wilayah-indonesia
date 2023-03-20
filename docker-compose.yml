@@ -9,7 +9,11 @@ services:
       context: .
       dockerfile: Dockerfile
       target: base
+    volumes:
+      - ./:/var/www/app
+      - /var/www/app/node_modules
     ports:
       - "${PORT}:${PORT}"
     env_file:
       - .env
+    command: ["nodemon", "./bin/www"]

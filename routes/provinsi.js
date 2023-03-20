@@ -58,6 +58,8 @@ var csv = require("fast-csv");
  *                 $ref: '#/components/schemas/Provinsi'
  */
 router.get("/", function (req, res, next) {
+  console.log("server: " + process.env.SERVER);
+  
   var _arrObj = [];
 
   // get data provinsi from csv file

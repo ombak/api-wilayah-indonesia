@@ -2,17 +2,6 @@
 
 require("dotenv").config();
 
-<<<<<<< HEAD
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var swaggerJsdoc = require('swagger-jsdoc');
-var swaggerUi = require('swagger-ui-express');
-var cors = require('cors');
-=======
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -22,7 +11,6 @@ var bodyParser = require("body-parser");
 var swaggerJsdoc = require("swagger-jsdoc");
 var swaggerUi = require("swagger-ui-express");
 var cors = require("cors");
->>>>>>> 71e54bdf1e3a779294dee1b03491dcb9b9e97860
 
 // Module Routes
 var indexRouter = require("./routes/index");
@@ -41,15 +29,9 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-<<<<<<< HEAD
-app.use(express.static(path.join(__dirname, 'public')));
-// use cors
-//app.use(cors());
-
-=======
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
->>>>>>> 71e54bdf1e3a779294dee1b03491dcb9b9e97860
+
 
 // swagger settings
 const options = {
@@ -72,7 +54,7 @@ const options = {
     },
     servers: [
       {
-        url: process.env.SERVER,
+          url: process.env.SERVER,
       },
     ],
   },
