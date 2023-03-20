@@ -32,6 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
+
 // swagger settings
 const options = {
   definition: {
@@ -53,7 +54,7 @@ const options = {
     },
     servers: [
       {
-        url: process.env.SERVER,
+          url: process.env.SERVER,
       },
     ],
   },
