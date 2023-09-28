@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  # Nodejs
+  wilayah-api:
+    container_name: wilayah-api
+    build:
+      context: .
+      dockerfile: ./Dockerfile.prod
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/apps/api-wilayah-indonesia
+      - /usr/apps/api-wilayah-indonesia/node_modules
+    ports:
+      - "${PORT}:${PORT}"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"
