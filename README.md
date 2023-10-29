@@ -2,4 +2,4 @@
 Ini adalah API yang dibuat untuk menampilkan wilayah di Indonesia. 
 
 ## Link Documentation
-https://open-api.whalez.tech/api-docs/
+https://open-api.whalezz.com/api-docs/
