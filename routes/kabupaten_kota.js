@@ -78,7 +78,7 @@ router.get('/:provinsi_id', function (req, res, next) {
     var _id = req.params.provinsi_id;
 
     // get data kabupaten/kota by provinsi id
-    fs.createReadStream(path.resolve(__basedir, 'data', 'tbl_kabupaten_kota.csv'))
+    fs.createReadStream(path.resolve(__basedir, 'data', 'kabupaten_kota.csv'))
         .pipe(csv.parse({ headers: true }))
         .on('error', error => console.error(error))
         .on('data', (row) => {

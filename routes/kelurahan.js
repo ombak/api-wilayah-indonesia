@@ -72,7 +72,7 @@ router.get('/:kecamatan_id', function (req, res, next) {
     var _id = req.params.kecamatan_id;
 
     // get data kecamtan from csv file
-    fs.createReadStream(path.resolve(__basedir, 'data', 'tbl_kelurahan.csv'))
+    fs.createReadStream(path.resolve(__basedir, 'data', 'kelurahan.csv'))
         .pipe(csv.parse({ headers: true }))
         .on('error', error => console.error(error))
         .on('data', (row) => {

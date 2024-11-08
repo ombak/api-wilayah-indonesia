@@ -13,28 +13,23 @@ var csv = require("fast-csv");
  *     Provinsi:
  *       type: object
  *       required:
- *          - id
+ *          - kode
  *          - provinsi
- *          - ibukota,
- *          - p_bsni
+ *          - singkatan
  *       properties:
- *         id:
+ *         kode:
  *           type: string
  *           description: The auto generate id of the provinsi
  *         provinsi:
  *           type: string
  *           description: The name of province
- *         ibukota:
+ *         singkatan:
  *           type: string
  *           description: The capital of province
- *         p_bsni:
- *           type: string
- *           description: The National code
  *       example:
- *         id: 1
- *         provinsi: Aceh
- *         ibukota: Banda Aceh
- *         p_bsni: ID-AC
+ *         kode: 11 
+ *         provinsi: ACEH
+ *         singkatan: 
  */
 
 /**
@@ -63,7 +58,7 @@ router.get("/", function (req, res, next) {
   var _arrObj = [];
 
   // get data provinsi from csv file
-  fs.createReadStream(path.resolve(__basedir, "data", "tbl_provinsi.csv"))
+  fs.createReadStream(path.resolve(__basedir, "data", "provinsi.csv"))
     .pipe(csv.parse({ headers: true }))
     .on("error", (error) => console.log(error))
     .on("data", (row) => {
@@ -71,7 +66,7 @@ router.get("/", function (req, res, next) {
       _arrObj.push(row);
     })
     .on("end", (rowCount) => {
-      console.log("render");
+      //console.log("render");
       res.status(200).json({
         status: "success",
         message: "Get all data provinsi",

@@ -14,6 +14,6 @@ RUN rm -rf node_modules \
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3003
 
 CMD ["npm", "start"]

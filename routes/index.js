@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
         "status": "success",
         "message": "Selamat datang di RESTful APIs data wilayah di Indonesia",
         "license": "https://mit-license.org/",
-        "author": "ombak"
+        "author": "https://github.com/ombak"
     });
 });
 
